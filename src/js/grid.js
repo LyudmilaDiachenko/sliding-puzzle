@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import Cell from './cell'
 
-function Grid({turn, setTurn, win, setWin, showError, grid, setGrid, log, setLog, aiPlayer}) {  
+function Grid({win, setWin, showError, grid, setGrid, resolution}) {  
     function onClick(row, col){
-        if (!grid[row][col] && !win){
+        if (false && !win){
             let newGrid = [...grid]
-            newGrid[row][col] = turn
+            // newGrid[row][col] =
+            
             setGrid(newGrid)
             validateWin(newGrid)
         } else if (win) {
@@ -16,11 +17,14 @@ function Grid({turn, setTurn, win, setWin, showError, grid, setGrid, log, setLog
     }
 
     function validateWin(grid){
-        let isWin = false;
-        if (grid[0][0] === 1){
-            isWin = submitWin()
-        }
-        return isWin;
+        grid.reduce(
+            (racc, r, rn) => 
+                racc && r.reduce(
+                    (cacc, c, cn) => cacc && ((rn * resolution + cn) === c),
+                    true
+                ),
+            true
+        ) && submitWin()
     }
 
     function submitWin(){
@@ -29,6 +33,7 @@ function Grid({turn, setTurn, win, setWin, showError, grid, setGrid, log, setLog
     }
     
     return (
+        
         <div className={"grid " + win}>
             {grid.map(
                 (row, rowNum) => <div key={'row-'+rowNum} className="row">
