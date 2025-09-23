@@ -4,7 +4,7 @@
 
 ## See on GitHub Pages
 
-[tic-tac-toe](https://lyudmiladiachenko.github.io/sliding-puzzle/build/)
+[sliding puzzle](https://lyudmiladiachenko.github.io/sliding-puzzle/build/)
 
 ## Run local
 
