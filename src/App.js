@@ -28,15 +28,19 @@ function App() {
 
   function isValid(numbers){
     const [inversions, _] = numbers.reduce(([acc, prev], elem) => [(elem !== null && prev !== null && elem < prev) ? ++acc : acc, elem], [0, 0])
-    const emptyPositionRowNumber = Math.trunc(numbers.findIndex(e=>e===null) / resolution)
-    return (resolution % 2 && !(inversions % 2)) || 
-      (!(resolution % 2) && 
+    const emptyRowNumber = Math.trunc(numbers.findIndex(e=>e===null) / resolution)
+    return (even(resolution) && odd(inversions)) || 
+      (
+        odd(resolution) && 
         (
-          ((emptyPositionRowNumber % 2) && (inversions % 2)) || 
-          (!(emptyPositionRowNumber % 2) && !(inversions % 2))
+          (even(emptyRowNumber) && even(inversions)) || 
+          (odd(emptyRowNumber) && odd(inversions))
         )
       )
   }
+
+  function odd(i){ return !(i % 2); }
+  function even(i){ return !!(i % 2); }
 
   function showError() {
       setError(true)

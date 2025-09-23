@@ -8,7 +8,7 @@ function Cell({value, onClick}) {
         onClick={onClick}
         // style={{backgroundImage: ""}}
     >
-      {value}
+      {value!==null?value+1:value}
     </div>
   );
 }
