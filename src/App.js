@@ -6,9 +6,9 @@ function App() {
   const [resolution, setResolution] = useState(3)
   const [win, setWin] = useState(false)
   const [error, setError] = useState(false)
-   // створюємо квадратний масив з resolution^2 чисел 1 з яких порожня
-  const numbers = [...Array(resolution * resolution - 1).keys(), null].sort(_ => Math.random() > 0.5 ? 1 : -1);
-  const [grid, setGrid] = useState(fillGrid())
+  const [grid, setGrid] = useState([])
+
+  useState(_=>reset(), [])
 
   function reset(){
     setGrid(fillGrid())
@@ -16,11 +16,26 @@ function App() {
   }
 
   function fillGrid(){
-    return numbers.reduce((acc, n, i) => {
+    // створюємо квадратний масив з resolution^2 чисел 1 з яких порожня
+    const numbers = [...Array(resolution * resolution - 1).keys(), null].sort(_ => Math.random() > 0.5 ? 1 : -1);
+
+    return isValid(numbers) ? numbers.reduce((acc, n, i) => {
         if (i % resolution === 0) acc.push([])
         acc[acc.length - 1].push(n)
         return acc
-    }, [])
+    }, []) : fillGrid()
+  }
+
+  function isValid(numbers){
+    const [inversions, _] = numbers.reduce(([acc, prev], elem) => [(elem !== null && prev !== null && elem < prev) ? ++acc : acc, elem], [0, 0])
+    const emptyPositionRowNumber = Math.trunc(numbers.findIndex(e=>e===null) / resolution)
+    return (resolution % 2 && !(inversions % 2)) || 
+      (!(resolution % 2) && 
+        (
+          ((emptyPositionRowNumber % 2) && (inversions % 2)) || 
+          (!(emptyPositionRowNumber % 2) && !(inversions % 2))
+        )
+      )
   }
 
   function showError() {

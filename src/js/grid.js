@@ -28,7 +28,12 @@ function Grid({win, setWin, showError, grid, setGrid, resolution}) {
         grid.reduce(
             (racc, r, rn) => 
                 racc && r.reduce(
-                    (cacc, c, cn) => cacc && ((rn * resolution + cn) === c),
+                    (cacc, c, cn) => cacc && (
+                        // значення в клітинці рівне (номеру рядка * довжину рядка + номеру колонки)
+                        ((rn * resolution + cn) === c) || 
+                        // або це остання клітинка і вона порожня
+                        (rn === resolution-1 && cn === resolution-1 && c===null)
+                    ),
                     true
                 ),
             true
@@ -41,19 +46,11 @@ function Grid({win, setWin, showError, grid, setGrid, resolution}) {
     }
     
     return (
-        
-        <div className={"grid " + win}>
-            {grid.map(
-                (row, rowNum) => <div key={'row-'+rowNum} className="row">
-                    {row.map(
-                        (col, colNum) =>
-                            <Cell 
-                                key={'col-'+colNum} 
-                                value={col} 
-                                onClick={
-                                    () => onClick(rowNum, colNum)
-                                }
-                            />
+        <div className={"grid " + (win && "win")}>
+            {grid.map((row, rowNum) => 
+                <div key={'row-'+rowNum} className="row">
+                    {row.map((col, colNum) => 
+                        <Cell key={'col-'+colNum} value={col} onClick={() => onClick(rowNum, colNum)} />
                     )}
                 </div>
             )}
