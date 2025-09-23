@@ -3,9 +3,17 @@ import Cell from './cell'
 
 function Grid({win, setWin, showError, grid, setGrid, resolution}) {  
     function onClick(row, col){
-        if (false && !win){
+        let nearestEmptyCell;
+
+        if (grid[row-1] && grid[row-1][col] === null) nearestEmptyCell = [row-1, col]
+        if (grid[row+1] && grid[row+1][col] === null) nearestEmptyCell = [row+1, col]
+        if (grid[row][col-1] === null) nearestEmptyCell = [row, col-1]
+        if (grid[row][col+1] === null) nearestEmptyCell = [row, col+1]
+
+        if (nearestEmptyCell && !win){
             let newGrid = [...grid]
-            // newGrid[row][col] =
+            newGrid[nearestEmptyCell[0]][nearestEmptyCell[1]] = grid[row][col]
+            newGrid[row][col] = null
             
             setGrid(newGrid)
             validateWin(newGrid)
