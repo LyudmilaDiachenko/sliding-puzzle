@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Grid from './js/grid'
 import Error from './js/error'
-import Controls from "./controls";
+import LeftBar from "./leftBar";
 
 function App() {
   const [resolution, setResolution] = useState(3)
@@ -52,8 +52,8 @@ function App() {
   return (
     <div className="App">
       <div className="App-header">
+        <LeftBar {...{resolution, setResolution}}/>
         <Grid {...{grid, setGrid, win, setWin, showError, resolution}} />
-        <Controls {...{resolution, setResolution}}/>
         <Error error={error} />          
       </div>
     </div>

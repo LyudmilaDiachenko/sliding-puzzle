@@ -73,3 +73,15 @@ button{
   white-space: nowrap;
   border-radius: 5px;
 }
+.aside {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+.aside-right{
+  right: 5%;
+}
+.aside-left{
+  left: 5%;
+  text-align: left;
+}
