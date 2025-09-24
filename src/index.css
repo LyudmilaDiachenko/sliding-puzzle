@@ -38,12 +38,40 @@ code {
   display: flex;
   flex: 1;
   aspect-ratio: 1/1;
+  background-size: cover;
+  background-repeat: no-repeat; 
+  background-position: center;  
+}
+.grid .cell{
   justify-content: center;
   align-items: center;
   border: 1px solid black;
   margin: 3px;
   box-shadow: 3px 3px;
   transition: all 0.5s;
+}
+.cell.theme-0{
+  background-image: none;
+}
+.cell.theme-1{
+  background-image: url("./media/1.jpg");
+
+}
+.cell.theme-2{
+  background-image: url("./media/2.jpg");
+}
+.cell.theme-3{
+  background-image: url("./media/3.jpg");
+}
+.themes .cell{
+  opacity: 0.5;
+  transition: all 0.5s;
+}
+.themes input{
+  display: none;
+}
+input:checked+.cell{
+  opacity: 1;
 }
 .cell-null{
   border: none;

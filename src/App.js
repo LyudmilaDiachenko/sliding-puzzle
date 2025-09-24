@@ -6,6 +6,7 @@ import RightBar from "./rightBar";
 
 function App() {
   const [resolution, setResolution] = useState(3)
+  const [theme, setTheme] = useState(0)
   const [win, setWin] = useState(false)
   const [error, setError] = useState(false)
   const [grid, setGrid] = useState([])
@@ -54,8 +55,8 @@ function App() {
     <div className="App">
       <div className="App-header">
         <LeftBar {...{resolution, setResolution}}/>
-        <Grid {...{grid, setGrid, win, setWin, showError, resolution}} />
-        <RightBar {...{reset}} />
+        <Grid {...{grid, setGrid, win, setWin, showError, resolution, theme}} />
+        <RightBar {...{reset, theme, setTheme}} />
         <Error error={error} />          
       </div>
     </div>
