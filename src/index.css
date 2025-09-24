@@ -43,6 +43,7 @@ code {
   border: 1px solid black;
   margin: 3px;
   box-shadow: 3px 3px;
+  transition: all 0.5s;
 }
 .cell-null{
   border: none;
@@ -68,7 +69,6 @@ code {
 }
 button{
   color: #1a5276;
-  width: 49%;
   padding: 10px 25px;
   white-space: nowrap;
   border-radius: 5px;
