@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Cell from './cell'
 
-function Grid({win, setWin, showError, grid, setGrid, resolution}) {  
+function Grid({win, setWin, showError, grid, setGrid, theme, resolution}) {  
     function onClick(row, col){
         let nearestEmptyCell;
 
@@ -46,11 +46,11 @@ function Grid({win, setWin, showError, grid, setGrid, resolution}) {
     }
     
     return (
-        <div className={"grid " + (win && "win")}>
+        <div className={"grid" + (win ? " win" : "")}>
             {grid.map((row, rowNum) => 
                 <div key={'row-'+rowNum} className="row">
                     {row.map((col, colNum) => 
-                        <Cell key={'col-'+colNum} value={col} onClick={() => onClick(rowNum, colNum)} />
+                        <Cell key={'col-'+colNum} value={col} theme={theme} resolution={resolution} onClick={() => onClick(rowNum, colNum)} />
                     )}
                 </div>
             )}
