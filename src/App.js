@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Grid from './js/grid'
 import Error from './js/error'
+import Controls from "./controls";
 
 function App() {
   const [resolution, setResolution] = useState(3)
@@ -8,7 +9,8 @@ function App() {
   const [error, setError] = useState(false)
   const [grid, setGrid] = useState([])
 
-  useState(_=>reset(), [])
+  useEffect(_=>reset(), [])
+  useEffect(_=>reset(), [resolution])
 
   function reset(){
     setGrid(fillGrid())
@@ -51,6 +53,7 @@ function App() {
     <div className="App">
       <div className="App-header">
         <Grid {...{grid, setGrid, win, setWin, showError, resolution}} />
+        <Controls {...{resolution, setResolution}}/>
         <Error error={error} />          
       </div>
     </div>
