@@ -41,6 +41,8 @@ code {
   background-size: cover;
   background-repeat: no-repeat; 
   background-position: center;  
+  color: white;
+  text-shadow: 0 0 6px black;
 }
 .grid .cell{
   justify-content: center;
