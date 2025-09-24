@@ -54,14 +54,14 @@ code {
   background-image: none;
 }
 .cell.theme-1{
-  background-image: url("./media/1.jpg");
+  background-image: url("/public/media/1.jpg");
 
 }
 .cell.theme-2{
-  background-image: url("./media/2.jpg");
+  background-image: url("/public/media/2.jpg");
 }
 .cell.theme-3{
-  background-image: url("./media/3.jpg");
+  background-image: url("/public/media/3.jpg");
 }
 .themes .cell{
   opacity: 0.5;
