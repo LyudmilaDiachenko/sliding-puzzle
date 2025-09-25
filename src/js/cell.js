@@ -32,10 +32,20 @@ function Cell({value, onClick, resolution, theme}) {
     }
   }, [theme, value])
 
+  function playSound(){
+    const sound = new Audio("/media/cell.mp3")
+    sound.playbackRate = 5
+    sound.play()
+  }
+  function cellClick(){
+    playSound()
+    onClick()
+  }
+
   return (
     <div
         className={'cell cell-' + value}
-        onClick={onClick}
+        onClick={cellClick}
         style={{backgroundImage: `url(${bg})`, opacity: value === null ? 0.2 : 1}}
     >
       {value!==null?value+1:value}

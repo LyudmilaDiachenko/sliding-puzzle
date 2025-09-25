@@ -97,6 +97,9 @@ input:checked+.cell{
   opacity: 0;  
   background-color: rgba(0, 0, 0, 0);
 }
+div button{
+  margin-top: 20px;
+}
 button{
   color: #1a5276;
   padding: 10px 25px;
@@ -114,4 +117,17 @@ button{
 .aside-left{
   left: 5%;
   text-align: left;
+}
+.themes{
+  display: flex;
+  flex-direction: column;
+  width: 30vh;
+  height: 30vh;
+}
+.winBox{
+  height: 10vh;
+}
+.winBox h2{
+  margin: 0;
+  padding: 0;
 }
