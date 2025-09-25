@@ -17,13 +17,21 @@ function Grid({win, setWin, showError, grid, setGrid, theme, resolution}) {
             
             setGrid(newGrid)
             validateWin(newGrid)
+            playSound('turn')
         } else if (win) {
             // noop
         } else {
             showError()
+            playSound('error')
         }
     }
 
+    function playSound(file){
+        const sound = new Audio(`/media/${file}.mp3`)
+        sound.playbackRate = 2
+        sound.play()
+    }
+    
     function validateWin(grid){
         grid.reduce(
             (racc, r, rn) => 
@@ -42,6 +50,7 @@ function Grid({win, setWin, showError, grid, setGrid, theme, resolution}) {
 
     function submitWin(){
         setWin(true)
+        playSound('win')
         return true;
     }
     
