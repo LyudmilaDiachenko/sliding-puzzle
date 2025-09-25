@@ -1,23 +1,25 @@
 import React from "react";
 
-function RightBar({reset, theme, setTheme}) {
+function RightBar({reset, theme, setTheme}){
+  function generateThemes(){
+    const themesCount = 8
+    const squeare = Math.ceil(Math.sqrt(themesCount + 1))
+    let divatoz = []
+    for(let i = 0; i<=themesCount; i++){
+      divatoz.push(
+        <>
+          <input key={"theme-check-"+i} id={"check-"+i} type="radio" checked={theme===i} onChange={_=>setTheme(i)} />
+          <label key={"theme-cell-"+i} htmlFor={"check-"+i} className={"cell theme-"+i} style={{backgroundImage: `url("/media/${i}.jpg")`, width: 100/squeare + "%"}} />
+        </>
+      )
+    }
+    return divatoz
+  }
+
   return (
     <div className="aside aside-right">
         <div className="themes">
-          <div className="row">
-            <input id="check-0" type="radio" checked={theme===0} onChange={_=>setTheme(0)} />
-            <label htmlFor="check-0" className="cell theme-0"></label>
-            
-            <input id="check-1" type="radio" checked={theme===1} onChange={_=>setTheme(1)} />
-            <label htmlFor="check-1" className="cell theme-1"></label>
-          </div>
-          <div className="row">
-            <input id="check-2" type="radio" checked={theme===2} onChange={_=>setTheme(2)} />
-            <label htmlFor="check-2" className="cell theme-2"></label>
-            
-            <input id="check-3" type="radio" checked={theme===3} onChange={_=>setTheme(3)} />
-            <label htmlFor="check-3" className="cell theme-3"></label>
-          </div>
+          {generateThemes()}
         </div>
           <div>
             <button onClick={reset}>

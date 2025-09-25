@@ -53,21 +53,19 @@ code {
   transition: all 0.5s;
 }
 .cell.theme-0{
-  background-image: none;
+  background-image: none !important;
 }
-.cell.theme-1{
-  background-image: url("/public/media/1.jpg");
-
-}
-.cell.theme-2{
-  background-image: url("/public/media/2.jpg");
-}
-.cell.theme-3{
-  background-image: url("/public/media/3.jpg");
+.themes{
+  width: 30vh;
+  display: block;
 }
 .themes .cell{
+  float: left;
+  border: 1px solid rgba(0, 0, 0, 0);
+  box-sizing: border-box;
   opacity: 0.5;
   transition: all 0.5s;
+
 }
 .themes input{
   display: none;
@@ -117,12 +115,6 @@ button{
 .aside-left{
   left: 5%;
   text-align: left;
-}
-.themes{
-  display: flex;
-  flex-direction: column;
-  width: 30vh;
-  height: 30vh;
 }
 .winBox{
   height: 10vh;
