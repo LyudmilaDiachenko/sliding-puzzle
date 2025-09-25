@@ -3,6 +3,10 @@ import React from "react";
 function leftBar({resolution, setResolution}) {
   return (
     <div className="aside aside-left">
+          <label>
+            <input type="radio" checked={resolution===2} onChange={_=>setResolution(2)}/>
+            2x2
+        </label>
         <label>
             <input type="radio" checked={resolution===3} onChange={_=>setResolution(3)}/>
             3x3

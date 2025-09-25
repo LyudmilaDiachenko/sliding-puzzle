@@ -6,7 +6,7 @@ import RightBar from "./js/rightBar";
 import Header from "./js/header";
 
 function App() {
-  const [resolution, setResolution] = useState(2)
+  const [resolution, setResolution] = useState(3)
   const [theme, setTheme] = useState(0)
   const [win, setWin] = useState(false)
   const [error, setError] = useState(false)
@@ -32,16 +32,17 @@ function App() {
   }
 
   function isValid(numbers){
-    const [inversions, _] = numbers.reduce(([acc, prev], elem) => [(elem !== null && prev !== null && elem < prev) ? ++acc : acc, elem], [0, 0])
-    const emptyRowNumber = Math.trunc(numbers.findIndex(e=>e===null) / resolution)
-    return (even(resolution) && odd(inversions)) || 
-      (
-        odd(resolution) && 
-        (
-          (even(emptyRowNumber) && even(inversions)) || 
-          (odd(emptyRowNumber) && odd(inversions))
-        )
-      )
+    return true;
+    // const [inversions, _] = numbers.reduce(([acc, prev], elem) => [(elem !== null && prev !== null && elem < prev) ? ++acc : acc, elem], [0, 0])
+    // const emptyRowNumber = Math.trunc(numbers.findIndex(e=>e===null) / resolution)
+    // return (even(resolution) && odd(inversions)) || 
+    //   (
+    //     odd(resolution) && 
+    //     (
+    //       (even(emptyRowNumber) && even(inversions)) || 
+    //       (odd(emptyRowNumber) && odd(inversions))
+    //     )
+    //   )
   }
 
   function odd(i){ return !(i % 2); }

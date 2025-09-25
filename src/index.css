@@ -49,7 +49,7 @@ code {
   align-items: center;
   border: 1px solid black;
   margin: 3px;
-  box-shadow: 3px 3px;
+  box-shadow: 3px 3px black;
   transition: all 0.5s;
 }
 .cell.theme-0{
