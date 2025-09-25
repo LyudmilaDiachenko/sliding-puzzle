@@ -4,7 +4,7 @@ function Cell({value, onClick, resolution, theme}) {
   const [bg, setBG] = useState('')
 
   useEffect(_=>{
-    if (!theme) return setBG('');
+    if (!theme) return setBG('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
     const img = document.createElement("img")
     img.src = `/media/${theme}.jpg`
 
@@ -32,20 +32,10 @@ function Cell({value, onClick, resolution, theme}) {
     }
   }, [theme, value])
 
-  function playSound(){
-    const sound = new Audio("/media/cell.mp3")
-    sound.playbackRate = 5
-    sound.play()
-  }
-  function cellClick(){
-    playSound()
-    onClick()
-  }
-
   return (
     <div
         className={'cell cell-' + value}
-        onClick={cellClick}
+        onClick={onClick}
         style={{backgroundImage: `url(${bg})`, opacity: value === null ? 0.2 : 1}}
     >
       {value!==null?value+1:value}
