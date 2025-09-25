@@ -6,6 +6,7 @@ function Cell({value, onClick, resolution, theme}) {
   useEffect(_=>{
     if (!theme) return setBG('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
     const img = document.createElement("img")
+    img.crossOrigin="anonymous"
     img.src = `/media/${theme}.jpg`
 
     img.onload = () => {
@@ -16,9 +17,9 @@ function Cell({value, onClick, resolution, theme}) {
       
       gridCanvas.width = img.width
       gridCanvas.height = img.height
-      gridCanvasCtx.drawImage(img, 0, 0, img.width, img.width);
+      gridCanvasCtx.drawImage(img, 0, 0, img.width, img.width)
       
-      const cellSize = Math.round(img.width / resolution)
+      const cellSize = Math.floor(img.width / resolution)
 
       cellCanvas.width = cellSize
       cellCanvas.height = cellSize
