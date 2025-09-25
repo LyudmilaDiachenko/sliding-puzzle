@@ -19,10 +19,11 @@ function RightBar({reset, theme, setTheme}) {
             <label htmlFor="check-3" className="cell theme-3"></label>
           </div>
         </div>
-
-        <button onClick={reset}>
-            Почати заново
-        </button>  
+          <div>
+            <button onClick={reset}>
+              Почати заново
+          </button>  
+        </div>
     </div>
   );
 }

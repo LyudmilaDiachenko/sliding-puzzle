@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Grid from './js/grid'
 import Error from './js/error'
-import LeftBar from "./leftBar";
-import RightBar from "./rightBar";
+import LeftBar from "./js/leftBar";
+import RightBar from "./js/rightBar";
+import Header from "./js/header";
 
 function App() {
-  const [resolution, setResolution] = useState(3)
+  const [resolution, setResolution] = useState(2)
   const [theme, setTheme] = useState(0)
   const [win, setWin] = useState(false)
   const [error, setError] = useState(false)
@@ -54,6 +55,7 @@ function App() {
   return (
     <div className="App">
       <div className="App-header">
+        <Header {...{win}}/>
         <LeftBar {...{resolution, setResolution}}/>
         <Grid {...{grid, setGrid, win, setWin, showError, resolution, theme}} />
         <RightBar {...{reset, theme, setTheme}} />
